@@ -1,71 +1,33 @@
-var polaznici = [
-    {
-        name: 'Igor',
-        surname: 'Boroja',
-        age: 12,
-    },
-    {
-        name: 'Ivan',
-        surname: 'Munitić',
-        age: 13,
-    },
-    {
-        name: 'Aleks',
-        surname: 'Ivanac',
-        age: 15,
-    },
-    {
-        name: 'Danijel',
-        surname: 'Hrgić',
-        age: 16,
-    },
-    {
-        name: 'Darko',
-        surname: 'Šušnjar',
-    },
-];
+const warmColors = ["red", "green", "orange"];
+const coolColors = ["blue", "green", "purple"];
+const brojevi1 = [1, 2];
+const brojevi2 = [2, 3, 4];
 
-function checkAge(age) {
-    if (age < 18){
-        return ' je maloljetnik/-ca';
-    }else if(age >= 18 && age < 67){
-        return ' je punoljetnik/-ca';
-    } else {
-        return " je penzić";
-    }
-}
+const arrayMachine = function (first, second) {
+//   let finalArray = first.concat(second);
+    let finalArray = [...first, ...second];
+//  finalArray = new Set(finalArray);
+// finalArray = Array.from(finalArray);
+    finalArray = [...new Set(finalArray)];
 
-polaznici.forEach((polaznik) => {
-    console.log("Ime: " + polaznik.name);
-    console.log(checkAge(polaznik.age));
-});
+    finalArray.sort();
+    console.log(finalArray);
 
-function checkAge(age, name, surname){
-    var ageResponse = "";
-    var fullName = name + " " + surname;
+    finalArray.reverse();
+    console.log(finalArray);
+};
 
-    switch(true){
-        case age < 18:
-            ageResponse = fullName + " je maloljetnik";
-            break;
-        case age >= 18 && age < 67:
-            ageResponse = fullName + " je punoljwtnik";
-            break;
-        case age >= 67:
-            ageResponse = fullName + " je penzić";
-            break;
-            default:
-                ageResponse = "osoba se još nije rodila";
-                break;
-    }
-    return ageResponse;
-}
-polaznici.forEach((polaznik) => {
-    console.log("Ime: " + polaznik.name);
-    console.log(checkAge(polaznik.age, polaznik.name, polaznik.surname));
-});
+arrayMachine(warmColors, coolColors);
+arrayMachine(brojevi1, brojevi2);
 
-/* ===
-polaznici.forEach(function(polaznik){
-    console.log(polaznik.name);
-});*/
+const dog = {
+    pasmina: "Doggo",    
+};
+
+const human = {
+    name: "Ivana",
+    age: 23,
+    ...dog,
+};
+console.log(human);
+
