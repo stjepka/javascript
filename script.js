@@ -1,33 +1,21 @@
-const warmColors = ["red", "green", "orange"];
-const coolColors = ["blue", "green", "purple"];
-const brojevi1 = [1, 2];
-const brojevi2 = [2, 3, 4];
+var b = document.querySelector("#body"); 
+var h = document.createElement("h1");
+b.insertBefore(h, b.firstChild);
+// ovo se moglo i sa prepend funkcijom
+h.innerText = "Jako smo pametni!!!!!!!!!";
 
-const arrayMachine = function (first, second) {
-//   let finalArray = first.concat(second);
-    let finalArray = [...first, ...second];
-//  finalArray = new Set(finalArray);
-// finalArray = Array.from(finalArray);
-    finalArray = [...new Set(finalArray)];
+var f = document.querySelector("#footer")
+var div2 = document.createElement("div2");
+b.insertBefore(div2, f);
 
-    finalArray.sort();
-    console.log(finalArray);
+div2.classList.add('info');
 
-    finalArray.reverse();
-    console.log(finalArray);
-};
+var list = document.querySelector("#ul");
+var li = document.querySelector("#li");
 
-arrayMachine(warmColors, coolColors);
-arrayMachine(brojevi1, brojevi2);
+for (let i=0; i<3; i++){
+    const li = document.createElement("li");
+    list.appendChild(li);
+}
 
-const dog = {
-    pasmina: "Doggo",    
-};
-
-const human = {
-    name: "Ivana",
-    age: 23,
-    ...dog,
-};
-console.log(human);
-
+console.log(b);
