@@ -3,7 +3,9 @@
 <head>
   <title></title>
   <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body>
   <header></header>
   <main>
@@ -11,12 +13,17 @@
       <div class="todo">
         <form action="#" method="post" class="todo__form">
           <input type="text" class="todo__input" placeholder="Enter to-do task...">
+          <!--onkeydown="inputKeyDown(event)" ide u input kako bi se enter povezao s programom uz js-->
         </form>
-        <div class="todo__tasks">
-          <div class="todo__task">1. Oprati suđe</div>
-          <div class="todo__task">2. Usisati kuću</div>
-          <div class="todo__task">3. Učiti</div>
+        <p class="todo__error-message">Task is already in array.</p>
+        <!--        <div class="todo__tasks">There is no tasks yet.</div>
+-->
+      <div class="todo__tasks">
+        <div class="todo__task">
+          <p>1.task</p>
+          <a class="todo__task-delete" href="#">Delete</a>
         </div>
+      </div>
       </div>
     </section>
   </main>
@@ -24,4 +31,3 @@
   <script async src="script.js"></script>
 </body>
 </html>
-
