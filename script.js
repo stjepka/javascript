@@ -1,30 +1,36 @@
-const buildSomething = function(housePart, estimate, callback) {
-  console.log(housePart + "build started...");
-  setTimeout(function () {
-    if (true) {
-      callback(housePart, "ready");
-    } else {
-      callback(housePart, "not ready");
-    }
-  }, estimate);
+const buildSomething = function (housePart, estimate) {
+  console.log(housePart + " building started...");
+
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      if (true) {
+        resolve("ready");
+      } else {
+        reject("Unexpected error found, building can not be continued!");
+      }
+    }, estimate);
+  });
 };
 
-buildSomething("Foundations ", 1000, function (housePart, status) {
-  let houseParts = housePart;
-  console.log(`${houseParts} are ${status}`);
-
-  if(status === "ready") {
-    buildSomething("Walls ", 2000, function (housePart, status) {
-      houseParts += `, ${housePart}`;
-      console.log(`${houseParts} are ${status}`);
-
-      if (status === "ready") {
-        buildSomething("Roof ", 3000, function (housePart, status) {
-          houseParts += `, ${housePart}`;
-          console.log(`${houseParts} are ${status}`);
-          console.log("House is built!");
-        });
-      }
-    });
-  }
-});
+buildSomething("Foundations", 1000)
+  .then((status) => {
+    console.log(`Foundations are ${status}`);
+    return buildSomething("Walls", 1000);
+  })
+  .then((status) => {
+    console.log(`Walls are ${status}`);
+    return buildSomething("Roof", 2000);
+  })
+  .then((status) => {
+    console.log(`Roof is ${status}`);
+    return buildSomething("House is built!");
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(()=> {
+    console.log(
+      "Bez obzira jel se desilo ovo il ono ja ću se pokrenuti"
+    )
+  })
+  ;
