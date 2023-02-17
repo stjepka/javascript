@@ -1,36 +1,18 @@
-const buildSomething = function (housePart, estimate) {
-  console.log(housePart + " building started...");
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(function(){
+    resolve("Promise 1 resolved")
+  }, 2000);
+})
 
-  return new Promise((resolve, reject) => {
-    setTimeout(function () {
-      if (true) {
-        resolve("ready");
-      } else {
-        reject("Unexpected error found, building can not be continued!");
-      }
-    }, estimate);
-  });
-};
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(function(){
+    reject("Promise 2 rejected")
+  }, 5000);
+})
 
-buildSomething("Foundations", 1000)
-  .then((status) => {
-    console.log(`Foundations are ${status}`);
-    return buildSomething("Walls", 1000);
-  })
-  .then((status) => {
-    console.log(`Walls are ${status}`);
-    return buildSomething("Roof", 2000);
-  })
-  .then((status) => {
-    console.log(`Roof is ${status}`);
-    return buildSomething("House is built!");
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(()=> {
-    console.log(
-      "Bez obzira jel se desilo ovo il ono ja ću se pokrenuti"
-    )
-  })
-  ;
+promise1.then(result => console.log(result));
+
+Promise.all([promise1, promise2])
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+  .finally(() => console.log('Always executed'))
