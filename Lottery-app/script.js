@@ -16,6 +16,10 @@ buttonStartLotteryEl.addEventListener("click", function () {
     .startDrawing()
     .then((result) => {
         winningCombinationEl.innerText = `Winning combo was: ˘${result.winningCombination}`;
+        winningMessageEl.innerHTML = "Winners:"
+
+        let winnersList = "";
+        result.winners.forEach((winner) => (winnersList += `<li>${winner.getPlayerDetails()}</li>`)
     })
     .catch((result) => {
      
