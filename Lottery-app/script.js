@@ -1,32 +1,8 @@
-import Lottery from "./modules/lottery.js";
-import { politicians, folk } from "./data/data.js";
+import { Array } from "./modules/data/data";
 
-const buttonStartLotteryEl = document.querySelector('.button-start-lottery');
-const lottteryResultsEl = document.querySelector(".lottery-results");
-const winningCombinationEl = document.querySelector(".winning-combination");
-const winningMessageEl = document.querySelector(".winners-message");
-const winnersEl = document.querySelector(".winners");
+let button = document.querySelector("button");
 
-const lottery = new Lottery(politicians); //istanciranje objekta, povezivanje politiciansa s ostalim
-
-buttonStartLotteryEl.addEventListener("click", function () {
-    buttonStartLotteryEl.disabled = true;
-    buttonStartLotteryEl.innerText = "Lottery drawing in progress...."
-    lottery
-    .startDrawing()
-    .then((result) => {
-        winningCombinationEl.innerText = `Winning combo was: ˘${result.winningCombination}`;
-        winningMessageEl.innerHTML = "Winners:"
-
-        let winnersList = "";
-        result.winners.forEach((winner) => (winnersList += `<li>${winner.getPlayerDetails()}</li>`)
-    })
-    .catch((result) => {
-     
-    })
-
-    .finally(() => {
-        buttonStartLotteryEl.disabled = false;
-        buttonStartLotteryEl.innerText = "Start lottery drawing"
-    });
+button.addEventListener("click", function(){
+    console.log("kfgjdf");
 });
+
