@@ -1,0 +1,13 @@
+.form, h1{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: grid;
+}
+
+.lection{
+    column-gap: 50px;
+    row-gap: 50px;
+}
